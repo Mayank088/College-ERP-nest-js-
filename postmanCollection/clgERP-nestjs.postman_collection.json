@@ -1,0 +1,725 @@
+{
+	"info": {
+		"_postman_id": "3be32dc3-30ae-4287-ae66-efb4070a9df4",
+		"name": "clgERP-nestjs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30671101"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Create Admin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if(pm.response.code === 201){\r",
+									"    pm.environment.set('authToken', pm.response.json().token)\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\" : \"mayank\",\n    \"role\" : \"admin\",\n    \"mobileNumber\" : \"1234567890\",\n    \"password\" : \"mayank123\",\n    \"department\" : \"CE\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/users/signup",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create staff",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if(pm.response.code === 201){\r",
+									"    pm.environment.set('authToken', pm.response.json().token)//here pm means postman\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n       \"name\" : \"rohan\",\n    \"role\" : \"staff\",\n    \"mobileNumber\" : \"1234567892\",\n    \"password\" : \"mayank123\",\n    \"department\" : \"CE\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/users/staff/create",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"staff",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if(pm.response.code === 200){\r",
+									"    pm.environment.set('authToken', pm.response.json().token)//here pm means postman\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"mobileNumber\" : \"1234567890\",\n    \"password\" : \"mayank123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/users/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/users/logout",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmUyODRkODViZWQyYTdjNzI5OGJhMjUiLCJpYXQiOjE3MjYxMjExNzZ9.T27v_xeNrURqChOsCzoPBRIRdKD-Eu2bhN-23jhyR3o",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\" : \"ramesh\",\n    \"mobileNumber\" : \"1234567890\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/users/update",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmUyODRkODViZWQyYTdjNzI5OGJhMjUiLCJpYXQiOjE3MjYxMjQ0NjF9.CHFZrLzgc_XBsIP4l25xvHpWthhV-ZdEJ_mKvKV4qco",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/users/all",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmUyODRkODViZWQyYTdjNzI5OGJhMjUiLCJpYXQiOjE3MjYxMjQ0NjF9.CHFZrLzgc_XBsIP4l25xvHpWthhV-ZdEJ_mKvKV4qco",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/users/delete/1234567892",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"delete",
+								"1234567892"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Batch",
+			"item": [
+				{
+					"name": "create batch",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"year\" : 2022\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/batch/create",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"batch",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create branch",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\" : \"EC\",\n    \"totalStudentsIntake\" : 200,\n    \"currentSeatCount\" : 0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/batch/branch?year=2022",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"batch",
+								"branch"
+							],
+							"query": [
+								{
+									"key": "year",
+									"value": "2022"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all batch",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/batch",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"batch"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update batch",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"branchName\" : \"EC\",\n    \"newBranchName\" : \"CE\",\n    \"totalStudentsIntake\" : 300\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/batch/update?year=2022",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"batch",
+								"update"
+							],
+							"query": [
+								{
+									"key": "year",
+									"value": "2022"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete batch",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/batch/delete?year=2022",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"batch",
+								"delete"
+							],
+							"query": [
+								{
+									"key": "year",
+									"value": "2022"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Student",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmUyODRkODViZWQyYTdjNzI5OGJhMjUiLCJpYXQiOjE3MjYxMzIxOTd9.9NNeTYnLwZijfWMMc_31JIF6GtQ8B0bs3Mi6It_HUrc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\" : \"harsh\",\n    \"rollNumber\" : \"21ce011\",\n    \"mobileNumber\" : \"9876543210\",\n    \"department\" : \"EC\",\n    \"batch\" : 2022,\n    \"currentSemester\" : 7,\n    \"role\" : \"student\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/student/create",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"student",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all student",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/student/all",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"student",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get student by roll number",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/student/21ce011",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"student",
+								"21ce011"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update student",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmUyODRkODViZWQyYTdjNzI5OGJhMjUiLCJpYXQiOjE3MjYxMzIxOTd9.9NNeTYnLwZijfWMMc_31JIF6GtQ8B0bs3Mi6It_HUrc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\" : \"bhautik\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/student/update?rollNumber=21ce011",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"student",
+								"update"
+							],
+							"query": [
+								{
+									"key": "rollNumber",
+									"value": "21ce011"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete student by roll number",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmUyODRkODViZWQyYTdjNzI5OGJhMjUiLCJpYXQiOjE3MjYxMzIxOTd9.9NNeTYnLwZijfWMMc_31JIF6GtQ8B0bs3Mi6It_HUrc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/student/delete?rollNumber=21ce011",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"student",
+								"delete"
+							],
+							"query": [
+								{
+									"key": "rollNumber",
+									"value": "21ce011"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "analytics",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/student/analytics",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"student",
+								"analytics"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "attendance",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"date\":\"14-09-2024\",\r\n    \"isAbsent\":\"absent\",\r\n    \"rollNumber\":\"21ce011\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/attendance/create",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"attendance",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get attendance",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/attendance?date=14-09-2024",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"attendance"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "14-09-2024"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update attendance",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"rollNumber\":\"21ce011\",\r\n    \"date\":\"14-09-2024\",\r\n    \"isAbsent\":\"present\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/attendance/update",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"attendance",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete attendance",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/attendance/delete?rollNumber=21ce011",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"attendance",
+								"delete"
+							],
+							"query": [
+								{
+									"key": "rollNumber",
+									"value": "21ce011"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "analytics",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/attendance/analytics",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"attendance",
+								"analytics"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{authToken}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
